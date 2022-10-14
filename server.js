@@ -44,6 +44,8 @@ app.post("/login", (request, response) => {
       let fetchedRow = result.shift();
       if (fetchedRow.password == password) {
         response.send({ userID: fetchedRow.id });
+      } else {
+        response.send({ error: "Wrong Password!" });
       }
     } else {
       con.query(
